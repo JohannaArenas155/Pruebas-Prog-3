@@ -1,0 +1,23 @@
+{
+  "name": "pruebas-prog-3",
+  "version": "1.0.0",
+  "description": "[Pruebas]  Programa 3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohannaArenas155/Pruebas-Prog-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohannaArenas155/Pruebas-Prog-3/issues"
+  },
+  "homepage": "https://github.com/JohannaArenas155/Pruebas-Prog-3#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
