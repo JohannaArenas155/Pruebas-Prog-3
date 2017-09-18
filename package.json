@@ -1,23 +1,39 @@
 {
-  "name": "pruebas-prog-3",
-  "version": "1.0.0",
-  "description": "[Pruebas]  Programa 3",
+  "name": "Pruebas-Prog-2",
+  "version": "0.0.0",
+  "description": "Programa para contar el numero de lineas de codigo",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JohannaArenas155/Pruebas-Prog-3.git"
+    "url": "https://github.com/ccamilobedoya/Pruebas-Prog-2-LOC.git"
   },
+  "keywords": [
+    "code",
+    "count",
+    "LOC"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JohannaArenas155/Pruebas-Prog-3/issues"
+    "url": "https://github.com/ccamilobedoya/Pruebas-Prog-2-LOC/issues"
   },
-  "homepage": "https://github.com/JohannaArenas155/Pruebas-Prog-3#readme",
+  "homepage": "https://github.com/ccamilobedoya/Pruebas-Prog-2-LOC",
   "dependencies": {
-    "express": "^4.15.4"
+    "async": "^2.5.0",
+    "express": "^4.15.4",
+    "formidable": "^1.1.1",
+    "pug": "^2.0.0-rc.3",
+    "textract": "^2.1.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "gulp": "^3.9.1",
+    "mocha": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "chai-param": "^0.1.2"
   }
 }

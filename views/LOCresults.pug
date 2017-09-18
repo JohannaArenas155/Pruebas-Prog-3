@@ -1,0 +1,18 @@
+html
+  head
+    title Conteo de Lineas de Codigo
+    link(rel='stylesheet', href='/static/CSS/style.css')
+  body
+    h2(class='fuente') Conteo de Lineas de Codigo
+    .flex-container
+      //- Itera sobre el vector con la informacion
+      each info in information
+        .flex-card
+          p.bold=info.name
+          br
+          //- #{} Se usa para tomar el valor especifico
+          p <b>LOC: </b>#{info.loc}
+          p <b>Palabras clave: </b>#{info.keywords}
+          p <b>Variables: </b>#{info.vars}
+          p <b>Constantes: </b>#{info.consts}
+          p <b>Funciones: </b>#{info.functions}

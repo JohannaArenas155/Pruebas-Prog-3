@@ -1,7 +1,7 @@
 /******************************************************************/
 /* Nombre:      Index
-/* Autor:       Johanna
-/* Fecha:       31/08/17
+/* Autor:       Cristian
+/* Fecha:       19/08/17
 /* Descripción: Es el modulo de inicio, contiene las rutas de la aplicacion
 /*              ademas el inicio del servidor
 /******************************************************************/
@@ -11,13 +11,21 @@ const PORT = 8888;
 
 // Modulos requeridos
 var express = require('express');
-var routeProg3 = require('./routes/routeProg3');
+var routeLOC = require('./routes/routeLOC');
+var apiLOC = require('./routes/apiLOC');
 
 // Variables
 var app = express();
 
+// Motor de plantillas html
+app.set('views', './views');
+app.set('view engine', 'pug');
+
+// Uso de rutas
+app.use('/loc', routeLOC);
+app.use('/loc/api', apiLOC);
 // Esta es la ruta por defecto, modificar cuando haya algun menu
-app.use('/', routeProg3);
+app.use('/', routeLOC);
 
 // Ruta para cargar archivos estaticos
 app.use('/static', express.static(__dirname + '/public'));

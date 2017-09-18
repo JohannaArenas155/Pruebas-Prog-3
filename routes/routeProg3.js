@@ -11,7 +11,7 @@ var path   = require("path");
 
 // Ruta de inicio
 router.get('/', function(req, res) {
-  res.sendFile('start.html', {root: 'public/html'});
+  res.sendFile('form.html', {root: 'public/html'});
 });
 
 // Exporta todo lo relacionado a la variable router
