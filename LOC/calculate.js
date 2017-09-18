@@ -58,7 +58,7 @@ function calculateAll(files, texts, information, xValue, yValue) {
   console.log(aValue);
   console.log(rValue);
   console.log(rValuePow);
-  console.log(yk);*/
+  console.log(yValueJoined);*/
 }
 
 exports.calculateAll = calculateAll;
