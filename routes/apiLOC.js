@@ -20,7 +20,7 @@ router.use(function(req, res, next) {
   next();
 });
 
-//Mostrar los resultados por ahora
+/*//Mostrar los resultados por ahora
 var xValue = [130,650,99,150,128,302,95,945,368,961];
 var yValue = [186,699,132,272,291,331,199,1890,788,1601];
 var numbersAmount = xValue.length;
@@ -68,7 +68,7 @@ console.log(aValue);
 console.log(bValue);
 console.log(rValue);
 console.log(rValuePow);
-console.log(yk);
+console.log(yk);*/
 //Hasta aquí
 
 // Solo se necesita recibir archivos

@@ -8,11 +8,44 @@ html
       //- Itera sobre el vector con la informacion
       each info in information
         .flex-card
-          p.bold=info.name
+          //-p.bold=info.name
           br
           //- #{} Se usa para tomar el valor especifico
-          p <b>LOC: </b>#{info.loc}
-          p <b>Palabras clave: </b>#{info.keywords}
-          p <b>Variables: </b>#{info.vars}
-          p <b>Constantes: </b>#{info.consts}
-          p <b>Funciones: </b>#{info.functions}
+          p <b>LOC: </b>#{info._aValue}
+          p <b>Palabras clave: </b>#{info._bValue}
+          p <b>Variables: </b>#{info._rValue}
+          p <b>Constantes: </b>#{info._rValuePow}
+          p <b>Funciones: </b>#{info._yValueJoined}
+
+    table
+      th test
+        td
+
+      th Expected Values
+          
+      th Actual Values
+           
+      tr 
+      td βₒ
+      td β₁
+      td rₓᵧ
+      td r²
+      td yₖ
+
+      tr
+      td βₒ
+      td β₁
+      td rₓᵧ
+      td r²
+      td yₖ 
+
+      th
+        td
+        tr
+          td test1
+        tr
+          td test2
+        tr
+          td test3
+        tr
+          td test4
