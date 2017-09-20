@@ -7,7 +7,7 @@
 
 var express = require('express');
 var fileManager = require('../LOC/fileManager');
-var countingLOC = require('../LOC/calculate');
+var calculate = require('../LOC/calculate');
 var router = express.Router();
 var math = require('mathjs');
 
@@ -24,8 +24,6 @@ router.use(function(req, res, next) {
 var xValue = [130,650,99,150,128,302,95,945,368,961];
 var yValue = [186,699,132,272,291,331,199,1890,788,1601];
 var numbersAmount = xValue.length;
-console.log(numbersAmount);
-console.log(math.pow(numbersAmount,2));
 var xSummatory = 0;
 var ySummatory = 0;
 var xPow = [];
