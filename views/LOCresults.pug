@@ -1,51 +1,74 @@
 html
   head
-    title Conteo de Lineas de Codigo
+    title Tabla de resultados esperados VS resultados reales
     link(rel='stylesheet', href='/static/CSS/style.css')
   body
-    h2(class='fuente') Conteo de Lineas de Codigo
+    h2(class='fuente') Tabla de resultados esperados VS resultados reales
     .flex-container
-      //- Itera sobre el vector con la informacion
-      each info in information
-        .flex-card
-          //-p.bold=info.name
-          br
-          //- #{} Se usa para tomar el valor especifico
-          p <b>LOC: </b>#{info._aValue}
-          p <b>Palabras clave: </b>#{info._bValue}
-          p <b>Variables: </b>#{info._rValue}
-          p <b>Constantes: </b>#{info._rValuePow}
-          p <b>Funciones: </b>#{info._yValueJoined}
-
-    table
-      th test
-        td
-
-      th Expected Values
-          
-      th Actual Values
-           
-      tr 
-      td βₒ
-      td β₁
-      td rₓᵧ
-      td r²
-      td yₖ
-
-      tr
-      td βₒ
-      td β₁
-      td rₓᵧ
-      td r²
-      td yₖ 
-
-      th
-        td
+    - aux = information
+    <table align="center">
         tr
-          td test1
+          th test
+          <th colspan="5"> Expected Values
+          <th colspan='6'> Actual Values
         tr
-          td test2
+          th
+          th βₒ
+          th β₁
+          th rₓᵧ
+          th r²
+          th yₖ
+          th βₒ
+          th β₁
+          th rₓᵧ
+          th r²
+          th yₖ
+          th test Ingresado
         tr
-          td test3
+          th test1
+          td -22.55
+          td  1.7279
+          td  0.9545
+          td  0.9111
+          td  644.429
+          if information[0]
+            each info, index in information[0]
+              td  #{info[0]}
+            break
+            th #{files[0].name}
         tr
-          td test4
+          th test2
+          td  -4.039
+          td  0.1681
+          td  0.9333
+          td  0.8711
+          td  60.858
+          if information[1]
+            each info, index in information[1]
+              td   #{info[1]}
+            break
+            th #{files[1].name}
+        tr
+          th test3
+          td  -23.92
+          td  1.43097
+          td  0.9631
+          td  0.9276
+          td  528.4294
+          if information[2]
+            each info, index in information[2]
+              td   #{info[2]}
+            break
+            th #{files[2].name}
+        tr
+          th test4
+          td  -4.604
+          td  0.140164
+          td  0.9480
+          td  0.8988
+          td  49.4994
+          if information[3]
+            each info, index in information[3]
+              td   #{info[3]}
+            break
+            th #{files[3].name}

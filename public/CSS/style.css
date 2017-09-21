@@ -1,3 +1,16 @@
+table {
+  border: 3px solid #333;
+  border-style: 1px solid black;
+  border-radius: 1px solid #333;
+  border-color: solid #333;
+  border-collapse: separate;
+  background-color: #fff;
+}
+
+tr, th, td {
+  border: 1px solid #333;
+  font-size: 25px;
+}
 
 .image-preview-input {
     position: relative;
@@ -24,9 +37,7 @@
 
 
 body{
-
 background: #e64e4e;
-overflow: hidden;
 }
 
 .modal-dialog {

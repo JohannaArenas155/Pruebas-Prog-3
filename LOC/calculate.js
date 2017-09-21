@@ -2,14 +2,14 @@
 /* Nombre:      Manejador de archivos
 /* Autor:       Alejo
 /* Fecha:       16/09/17
-/* Descripción: Calcula la Regresion Lineal y el Coeficiente de Correlación de acuerdo a los textos recibidos
+/* Descripción: Calcula la Regresion Lineal y el Coeficiente de Correlación de acuerdo a los textos recibidos (csv)
 /******************************************************************/
 
 // Modulos
 var async = require('async');
 var math = require('mathjs');
 
-const xValueJoined = 386;
+var xValueJoined = 386;
 var regressionFunction; //no esta siendo utilizada
 
 var xValue = [];
@@ -20,16 +20,14 @@ var rValue = [];
 var rValuePow = [];
 var yValueJoined = [];
 
-//var aux = [];
-
-// Cuenta las lineas de codigo y todos sus items
+// Calcula todo lo necesario
 function calculateAll(files, texts, information) {
 
   var info = [];
 
   async.forEachOf(texts, function(value, key, cb){
 
-    var numbersAmount = 0;
+    var numbersAmount = 0; //Cantidad total de valores en el archivo
     var xSummatory = 0;
     var ySummatory = 0;
     var xPow = [];
@@ -41,16 +39,11 @@ function calculateAll(files, texts, information) {
     var xAvg = 0;
     var yAvg = 0;
 
-    console.log(value);
-
-    var aux = texts[key].split('\s'); //convierte el texto que viene en un string 
-    console.log(aux);
+    var aux = texts[key].split('\s'); //convierte el texto que viene en un string
     aux = aux[0].trim(); //elimina los espacios, del array de una posición
-    //console.log(aux[0].length);
-    //console.log(aux[0]);
-    console.log(key);
+
     var numbersAmount = ((aux.match(/,/g)).length);
-    //console.log(numbersAmount);
+
 
     var semaphore = 0;
     var startVector = 0;
@@ -59,11 +52,10 @@ function calculateAll(files, texts, information) {
 
     var xValuePosition = 0;
     var yValuePosition = 0;
-    //console.log(endVector);
     //Separa por comas teniendo en cuenta los espacios en el string aux y llena los vectores xValue y yValue.
     for (var i = 0; i < numbersAmount ; i++) {
       if (semaphore == 0){
-        xValue[xValuePosition] = parseFloat((aux.substring(startVector,endVector)).trim()); 
+        xValue[xValuePosition] = parseFloat((aux.substring(startVector,endVector)).trim());
         semaphore = 1;
         xValuePosition++;
         startVector = endVector;
@@ -78,6 +70,7 @@ function calculateAll(files, texts, information) {
       }
     }
 
+    //Dado que es un archivo de dos columnas y necesito iterar sobre cada par de valores
     numbersAmount = numbersAmount/2;
 
     for (var i = 0; i < numbersAmount; i++) {
@@ -93,25 +86,24 @@ function calculateAll(files, texts, information) {
 
     xAvg = xSummatory/numbersAmount;
     yAvg = ySummatory/numbersAmount;
+    //Calculo con las frmulas dadas cada valor necesario
     //B sub 1
-    bValue[key] = (xMultiplyYSummatory - (xAvg*yAvg*numbersAmount))/(xPowSummatory - (math.pow(xAvg,2)*numbersAmount));
+    bValue[key] = ((xMultiplyYSummatory - (xAvg*yAvg*numbersAmount))/(xPowSummatory - (math.pow(xAvg,2)*numbersAmount)));
     //B sub 0
     aValue[key] = ((yAvg) - (bValue[key]*(xAvg)));
 
-    rValue[key] = ((numbersAmount*xMultiplyYSummatory)-(xSummatory*ySummatory))/(math.sqrt(((numbersAmount*(xPowSummatory))-math.pow(xSummatory,2))*((numbersAmount*(yPowSummatory))-math.pow(ySummatory,2))));
+    rValue[key] = (((numbersAmount*xMultiplyYSummatory)-(xSummatory*ySummatory))/(math.sqrt(((numbersAmount*(xPowSummatory))-math.pow(xSummatory,2))*((numbersAmount*(yPowSummatory))-math.pow(ySummatory,2)))));
 
-    rValuePow[key] = rValue[key]*rValue[key];
+    rValuePow[key] = (rValue[key]*rValue[key]);
 
-    yValueJoined[key] = aValue[key] + bValue[key]*xValueJoined;
+    yValueJoined[key] = (parseFloat(aValue[key]) + parseFloat(bValue[key])*xValueJoined);
 
-    console.log( "El vector xValue es: " + xValue);
-    console.log( "El vector yValue es: " + yValue);
-
-    console.log(aValue[key]);
-    console.log(bValue[key]);
-    console.log(rValue[key]);
-    console.log(rValuePow[key]);
-    console.log(yValueJoined[key]);
+    //formateo los valores para mostrarlos con 4 decimas exactamente
+    aValue[key] = math.format(aValue[key],{notation: 'fixed', precision: 4});
+    bValue[key] = math.format(bValue[key],{notation: 'fixed', precision: 4});
+    rValue[key] = math.format(rValue[key],{notation: 'fixed', precision: 4});
+    rValuePow[key] = math.format(rValuePow[key],{notation: 'fixed', precision: 4});
+    yValueJoined[key] = math.format(yValueJoined[key],{notation: 'fixed', precision: 4});
 
     var tableInfo = {
         _aValue : aValue,
@@ -127,15 +119,7 @@ function calculateAll(files, texts, information) {
       information(null, info);
   });
 
-    /*console.log("xValue en la posición 0: " + xValue[0]);
-    console.log("xValue en la posición 1: " + xValue[1]);
-    console.log("xValue en la posición 2: " + xValue[2]);
-    console.log("yValue en la posición 0: " + yValue[0]);
-    console.log("yValue en la posición 1: " + yValue[1]);
-    console.log("xValue en la posición 2: " + yValue[2]);
-    var xMasYEnCero = xValue[0] + yValue[0];
-    console.log("z es igual a: " + xMasYEnCero);*/
-  
+
 }
 
 exports.calculateAll = calculateAll;

@@ -91,7 +91,7 @@ router.post('/upload', function(req, res) {
             if (err) {
               res.render('ErrorPage', {error: err});
             } else {
-              res.render('LOCresults', {information: info});
+              res.render('LOCresults', {information: info, files: results });
             }
           });
         }
