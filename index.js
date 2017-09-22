@@ -7,7 +7,7 @@
 /******************************************************************/
 
 // Constantes
-const PORT = 8888;
+const PORT = process.env.PORT || 8888;
 
 // Modulos requeridos
 var express = require('express');
